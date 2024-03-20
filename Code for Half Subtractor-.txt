@@ -1,0 +1,25 @@
+Code for Half Subtractor:-
+--------------------------
+
+module HalfSubtractor(
+    input a,b,
+    output diff,borrow
+    );
+    xor(diff,a,b);
+    and(borrow,!a,b);
+endmodule
+
+Test Bench:-
+------------
+module HalfSubtractor_tb;
+reg a,b;
+wire diff,borrow;
+HalfSubtractor uut (.a(a),.b(b),.diff(diff),.borrow(borrow));
+initial
+    begin
+        a=0;b=0;#100;
+        a=0;b=1;#100;
+        a=1;b=0;#100;
+        a=1;b=1;#100;
+    end
+endmodule
